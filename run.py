@@ -5,7 +5,8 @@ import json
 sys.path.insert(0, 'src')
 
 from build_features import create_struct
-from baseline_model import run_model
+from eda import run_model
+
 def main(targets):
     '''
     Runs the main project pipeline logic, given the targets.
@@ -20,7 +21,7 @@ def main(targets):
             data_cfg = json.load(fh)
         data_dict = create_struct(data_cfg['PATH'])
     
-    if 'model' in targets:
+    if 'eda' in targets:
         with open('config/model-params.json') as fh:
             model_cfg = json.load(fh)
             print("fetched data, building model features and running baseline...")

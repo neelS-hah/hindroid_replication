@@ -39,6 +39,21 @@ def create_features(def_dict):
     df = df.drop([0,2,3,4,5,6,7],1)
     return df
 
+def scatter_matrix(data, outdir):
+    data = create_features(data)
+    pd.plotting.scatter_matrix(data)
+    plt.suptitle('Independent Gaussians')
+    plt.savefig(os.path.join(outdir, 'scatter_matrix.png'))
+
+def basic_stats(data, outdir):
+    data = create_features(data)
+    out = pd.concat(
+        [data.mean().rename('means'), 
+         data.std().rename('standard deviations'),
+         data.median().rename('medians')], 
+        axis=1)
+    out.to_csv(os.path.join(outdir, 'basic_stats.csv'))
+
 def run_model(data_dict):
     #Split Data
     df = create_features(data_dict)
