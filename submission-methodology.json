@@ -1,4 +1,4 @@
 
 {
-	"dockerhub-id": "launch-180.sh -G A04_Malware -i nes008/methodology4:test"
+	"dockerhub-id": " nes008/methodology4:test"
 }
