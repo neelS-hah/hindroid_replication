@@ -14,7 +14,9 @@ def main(targets):
     
     `main` runs the targets in order of data=>analysis=>model.
     '''
-
+    if 'test' in targets:
+        data_dict = create_struct('test/testdata/')
+        print(run_model(data_dict))
 
     if 'data' in targets:
         with open('config/data-params.json') as fh:
