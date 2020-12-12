@@ -1,7 +1,5 @@
+
 {
-    "config": ["data-params.json", "model-params.json"], 
-    "build": "run.py", 
-    "library": ["src"], 
-    "notebook": ["eda-dev-version.ipynb", "report.ipynb"], 
-    "targets": ["data", "eda"] 
+	"dockerhub-id": " nes008/methodology4:test"
+	"repository-id": "https://github.com/neelS-hah/hindroid_replication.git"
 }
