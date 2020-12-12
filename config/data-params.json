@@ -1,5 +1,5 @@
 {
-	"MALWARE_PATH": "'/datasets/home/77/077/nes008/hindroid_replication/test/malware'",
-	"BENIGN_PATH": "'/datasets/home/77/077/nes008/hindroid_replication/test/benign'",
+	"MALWARE_PATH": "/datasets/home/77/077/nes008/hindroid_replication/test/malware",
+	"BENIGN_PATH": "/datasets/home/77/077/nes008/hindroid_replication/test/benign",
 	"outdir": "data/out/"
 }

@@ -12,14 +12,14 @@ def get_smali_files(mp,bp):
     
     #iterate through dir 
     malware_smali_list = []
-    for subdir, dirs, files in os.walk('/datasets/home/77/077/nes008/hindroid_replication/test/malware'):
+    for subdir, dirs, files in os.walk(mp):
         for filename in files:
             filepath = subdir + os.sep + filename
             #find smali files
             if filepath.endswith(".smali"):
                 malware_smali_list.append(filepath)
     benign_smali_list = []
-    for subdir, dirs, files in os.walk('/datasets/home/77/077/nes008/hindroid_replication/test/benign'):
+    for subdir, dirs, files in os.walk(bp):
         for filename in files:
             filepath = subdir + os.sep + filename
             #find smali files
