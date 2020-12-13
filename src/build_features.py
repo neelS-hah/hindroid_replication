@@ -71,8 +71,7 @@ def create_struct(mp, bp):
         file = open(i, "r")
         app_type = 'malware'
 #     app_name = i.split('/')[7]
-        app_name = i.split('/')[9]
-
+        app_name = i.split('/')[2]
         if app_name not in malware_seen:
             malware_seen.add(app_name)
         if len(malware_seen) > 40:
@@ -110,8 +109,7 @@ def create_struct(mp, bp):
     for i in benign_smali_list:
         file = open(i, "r")
     #     app_type = i.split('/')[4]
-    # app_name = i.split('/')[5]
-        app_name = i.split('/')[9]
+        app_name = i.split('/')[2]
         if app_name not in benign_seen:
             benign_seen.add(app_name)
         if len(benign_seen) > 40:
