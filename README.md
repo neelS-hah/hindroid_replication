@@ -1,6 +1,10 @@
 # hindroid_replication
 ## HinDroid: An Intelligent Android Malware Detection System. Based on Structured Heterogeneous Information Network.
 # Malware Detection Using API Relationships + Hindroid
+# HOW TO RUN 
+`python run.py test`
++ `requirements.txt`
+
 By July 2020, Android OS is still a leading mobile operating system that holds 74.6% of market share worldwide, attracting numerous crazy cyber-criminals who are targeting at the largest crowd.¹ Also, due to its open-resource feature and flexible system updating policy, it is 50 times more likely to get infected compared to ios systems.² Thus, developing a strong malware detection system becomes the number one priority.
 
 The current state of malware(malicious software) detection for the growing android OS application market involves looking solely at the API(Application Programming Interface) calls. API is a set of programming instructions that allow outside parties or individuals to access the platform or the application.³ A good and daily example will be the login options displaying on the app interface like “Login with Twitter”.4 Malwares can collect personal information easily from APIs, so analyzing APIs is a critical part of identifying malwares.
