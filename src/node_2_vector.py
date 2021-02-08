@@ -3,12 +3,6 @@ from tqdm.notebook import tqdm
 import pandas as pd
 import numpy as np
 from scipy import sparse
-from plotly.offline import init_notebook_mode, iplot, plot
-import plotly.graph_objs as go
-from plotly import tools
-import plotly.express as px
-import seaborn as sns
-import matplotlib.pyplot as plt
 import os
 from build_features import create_struct
 from eda import run_model
@@ -22,7 +16,6 @@ import os
 import gensim.models
 import pandas as pd
 from sklearn.manifold import TSNE
-import seaborn as sns
 import matplotlib.pyplot as plt
 import json
 #Derived From Gensim Source Code
@@ -150,22 +143,25 @@ def api_nn_P(api):
         ls.remove(api)
         return np.array(ls)
 #Store Walks 
-walks = walk(n=n, p=p, q=q, walk_length=2)
-print('performed walks')
-outfile = open(path, 'w')
-for walk in tqdm(walks):
-    outfile.write(' '.join(walk) + '\n')
-outfile.close()
+def runall(path, walk, n, p, q):
+    walks = walk(n=n, p=p, q=q, walk_length=2)
+    print('performed walks')
+    outfile = open(path, 'w')
+    for walk in tqdm(walks):
+        outfile.write(' '.join(walk) + '\n')
+    outfile.close()
 
-print('added walks to local dir')
+    print('added walks to local dir')
 
-# Gensim Model + Walks
-sentences = MyCorpus(path)
-model = gensim.models.Word2Vec(sentences=sentences, size=64,
+    # Gensim Model + Walks
+    sentences = MyCorpus(path)
+    model = gensim.models.Word2Vec(sentences=sentences, size=64,
                                sg=1, negative=5, window=3, iter=5, min_count=1)
-node_ids = model.wv.index2word
-node_embeddings = (
-    model.wv.vectors
-) 
-print('Successfully Created Node Embeddings Using Node 2 Vec')
+    node_ids = model.wv.index2word
+    node_embeddings = (
+        model.wv.vectors
+    ) 
+    print('Successfully Created Node Embeddings Using Node 2 Vec')
+def node2vec():
+    runall(path, walk, n, p, q)
 
