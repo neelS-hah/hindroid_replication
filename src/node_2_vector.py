@@ -30,13 +30,22 @@ class MyCorpus(object):
     """An interator that yields sentences (lists of str)."""
     def __init__(self, corpus_path):
         self.lines = open(corpus_path).readlines()
-        # if test_corpus_path is not None:
-        #     self.lines += open(test_corpus_path).readlines()  # !!! Test
 
     def __iter__(self):
         for line in tqdm(self.lines):
-            # assume there's one document per line, tokens separated by whitespace
             yield line.strip().split(' ')
+
+def api_nn_A(app):
+        app_id = int(app.split('_')[1])
+        neighbor_ids = np.nonzero(A_csr[app_id])[1]
+        return np.array([f'api_{s}' for s in neighbor_ids])
+
+def app_nn_A(api):
+    assert api.startswith('api_')
+    api_id = int(api.split('_')[1])
+    neighbor_ids = np.nonzero(A_csc[:, api_id])[0]
+    return np.array([f'app_{s}' for s in neighbor_ids])
+
 
 ######
 
@@ -124,18 +133,6 @@ def walk(n, p, q, walk_length):
                     continue
         return walks
 
-
-def api_nn_A(app):
-        app_id = int(app.split('_')[1])
-        neighbor_ids = np.nonzero(A_csr[app_id])[1]
-        return np.array([f'api_{s}' for s in neighbor_ids])
-
-def app_nn_A(api):
-    assert api.startswith('api_')
-    api_id = int(api.split('_')[1])
-    neighbor_ids = np.nonzero(A_csc[:, api_id])[0]
-    return np.array([f'app_{s}' for s in neighbor_ids])
-
 def all_nn_api(api):
         api_id = int(api.split('_')[1])
         nbr_apis = np.concatenate([
@@ -161,3 +158,14 @@ for walk in tqdm(walks):
 outfile.close()
 
 print('added walks to local dir')
+
+# Gensim Model + Walks
+sentences = MyCorpus(path)
+model = gensim.models.Word2Vec(sentences=sentences, size=64,
+                               sg=1, negative=5, window=3, iter=5, min_count=1)
+node_ids = model.wv.index2word
+node_embeddings = (
+    model.wv.vectors
+) 
+print('Successfully Created Node Embeddings Using Node 2 Vec')
+
