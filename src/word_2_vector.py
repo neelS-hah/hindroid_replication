@@ -64,17 +64,20 @@ def APA(length):
     while True:
         default = np.random.choice(np.arange(A.shape[0]))
 
-        path = f'app_{app}'
+        walk = f'app_{default}'
 
         for i in range(length):
 
-            i_traversal = np.random.choice(np.nonzero(A[default])[1])
+            try:
+                i_traversal = np.random.choice(np.nonzero(A[default])[1])
             
-            p_traversal = np.random.choice(np.nonzero(P[:, i_traversal])[0])
+                p_traversal = np.random.choice(np.nonzero(P[:, i_traversal])[0])
             
-            default = np.random.choice(np.nonzero(A_csc[:, p_traversal])[0])
+                default = np.random.choice(np.nonzero(A_csc[:, p_traversal])[0])
 
-            walk += f' api_{i_traversal} api_{p_traversal} app_{default}'
+                walk += f' api_{i_traversal} api_{p_traversal} app_{default}'
+            except:
+                continue
 
         yield walk
 
