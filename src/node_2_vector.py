@@ -18,6 +18,10 @@ import pandas as pd
 from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 import json
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import confusion_matrix
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.svm import SVC
 #Derived From Gensim Source Code
 class MyCorpus(object):
     """An interator that yields sentences (lists of str)."""
@@ -129,7 +133,6 @@ def walk(n, p, q, walk_length):
 def all_nn_api(api):
         api_id = int(api.split('_')[1])
         nbr_apis = np.concatenate([
-#             get_api_neighbors_B(api),
             api_nn_P(api)
         ])
         neighbor_apis = np.unique(nbr_apis)
@@ -162,6 +165,14 @@ def runall(path, walk, n, p, q):
         model.wv.vectors
     ) 
     print('Successfully Created Node Embeddings Using Node 2 Vec')
+    #print(node_embeddings)
+    #Evaluate - SVC 
+    svm = SVC(kernel='rbf', C=5)
+    #svm.fit(node_embeddings, data['EMBEDDING_TRAIN_Y'])
+    #print(svm.score(node_embeddings, data['EMBEDDINGS_TEST_Y']))
+
 def node2vec():
     runall(path, walk, n, p, q)
 
+
+    

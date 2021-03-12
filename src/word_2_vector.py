@@ -17,11 +17,10 @@ import gensim.models
 import pandas as pd
 from sklearn.manifold import TSNE
 import json
-
+from sklearn.ensemble import RandomForestRegressor
 
 #Derived From Gensim Source Code
 class MyCorpus(object):
-    """An interator that yields sentences (lists of str)."""
     def __init__(self, corpus_path):
         self.lines = open(corpus_path).readlines()
 
@@ -69,13 +68,16 @@ def APA(length):
         for i in range(length):
 
             try:
-                i_traversal = np.random.choice(np.nonzero(A[default])[1])
-            
-                p_traversal = np.random.choice(np.nonzero(P[:, i_traversal])[0])
-            
-                default = np.random.choice(np.nonzero(A_csc[:, p_traversal])[0])
+                # Traverse through the left 
+                i = np.random.choice(np.nonzero(A[default])[1])
+                
+                # Traverse through the left
+                p = np.random.choice(np.nonzero(P[:, i])[0])
+                
+                #Find the corresponding right
+                default = np.random.choice(np.nonzero(A_csc[:, p])[0])
 
-                walk += f' api_{i_traversal} api_{p_traversal} app_{default}'
+                walk += f' api_{i} api_{p} app_{default}'
             except:
                 continue
 
@@ -94,3 +96,10 @@ def word2vec():
     print('Creating Vector Embeddings Using Word 2 Vec')
     embeddings = model.wv.vectors
     print('Complete!')
+
+    #test embeddings train test split - control check 
+    #test embeddings overall 
+    X = [1,1]
+    Y = [1,1]
+
+    regressor = DecisionTreeRegressor(max_depth=None).fit(X, Y)

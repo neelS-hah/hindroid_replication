@@ -39,6 +39,8 @@ def main(targets):
         node2vec()
         print('CREATING WORD 2 VECTOR EMBEDDINGS')
         word2vec()
+        print('CREATING METAPATH 2 VECTOR EMBEDDINGS')
+        #metapath2vec()
         #print('creating kernels...')
         #aat = AAT(a)
         #abat = ABAT(a, b)
