@@ -30,24 +30,6 @@ The Hindroid model observes the same relationship of data to better classify mal
 The process of identifying the relationship of API calls, is taking the idea of the subsequent network it creates - thus to not just look at the information queried by the call but also the way it interacts with other API’s in different levels of the codebase. The applicability of this lies beyond that of malware detection in android apps, but probably in the roots of graph theory and how relationships with API calls can be better identified and mapped out to provide more insight
 
 
-
-
-
-
-
-
-
-
-
-## Responsibilities:
-## Report:
-Neel Shah: Malware Detection Using API Relationships + Hindroid, Data Generation Process, Observed Data, Conclusion
-Mandy Ma: Malware Detection Using API Relationships + Hindroid, Citation
-## Code:
-	Neel Shah: Refining codes, create repository, transfer code format to be able to run from terminal
-	Mandy Ma: Code algorithms,Debug code, Refining code
-
-
 ## Citation
 O'Dea, Published by S., and Aug 17. “Mobile OS Market Share 2019.” Statista, 17 Aug. 2020, www.statista.com/statistics/272698/global-market-share-held-by-mobile-operating-systems-since-2009/. 
 Panda Security Panda Security specializes in the development of endpoint security products and is part of the WatchGuard portfolio of IT security solutions. Initially focused on the development of antivirus software. “Android Devices 50 Times More Infected Compared to IOS - Panda Security.” Panda Security Mediacenter, 14 Jan. 2019, www.pandasecurity.com/en/mediacenter/mobile-security/android-more-infected-than-ios/
